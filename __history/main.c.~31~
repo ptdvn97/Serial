@@ -1,22 +1,24 @@
 #include <main.h>
 
+#use rs232(baud=9600,Parity=N,xmit=PIN_C6,rcv=PIN_C7)
+
 #INT_RDA
 void ngatDongCo()
 {
-   char a;
-   a = getc();
+   char   a;
+   a = input(PIN_B0);
    switch(a)
    {
-      case 'l'
+      case '1':
       {
-         output_bit(PIN_C1,1);
-         output_bit(PIN_C4,1);
+         printf("9");
+         OUTPUT_BIT(PIN_C0,1);
          break;
       }
-      case 'r'
+      case '0':
       {
-         output_bit(PIN_C1,1);
-         output_bit(PIN_C4,0);
+         OUTPUT_BIT(PIN_C0,0);
+         printf("8");
          break;
       }
    }

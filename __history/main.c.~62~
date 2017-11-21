@@ -1,0 +1,27 @@
+#include <main.h>
+
+#use rs232(baud=9600,Parity=N,xmit=PIN_C6,rcv=PIN_C7)
+int a=0;
+
+
+void main()
+{
+   int a;
+   set_tris_b(0x00);
+   while(1)
+   {
+   a = input(PIN_B0);
+      If(input(Pin_B0)) 
+    { 
+    Printf(" Pin C4 is high\n\r");  
+    //PIN_B4=1; 
+    } 
+   Else 
+   { 
+    Printf("Pin C4 is low/n/r"); 
+      
+   } 
+   delay_ms(1000);
+   }
+   
+}

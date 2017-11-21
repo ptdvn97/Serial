@@ -1,5 +1,5 @@
-004-005 @READ_PROGRAM_MEMORY8.P1
-004-005 @WRITE_PROGRAM_MEMORY8.P2
+004-005 @WRITE_PROGRAM_MEMORY8.P1
+004-005 @READ_PROGRAM_MEMORY8.P2
 008     PSP_DATA
 015     CCP_1_LOW
 015     CCP_1
@@ -14,8 +14,8 @@
 024     @INTERRUPT_AREA
 025     @INTERRUPT_AREA
 026     @INTERRUPT_AREA
-027     @TRIS_C
-028     ngatDongCo.a
+027     @INTERRUPT_AREA
+028     @TRIS_C
 077     @SCRATCH
 078     @SCRATCH
 078     _RETURN_
@@ -25,8 +25,8 @@
 09C.6   C1OUT
 09C.7   C2OUT
 0FF     @INTERRUPT_AREA
-10D-10E @WRITE_PROGRAM_MEMORY8.P1
-10D-10E @READ_PROGRAM_MEMORY8.P2
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
 17F     @INTERRUPT_AREA
 1FF     @INTERRUPT_AREA
 27F     @INTERRUPT_AREA
@@ -59,20 +59,19 @@ F7F     @INTERRUPT_AREA
 FFF     @INTERRUPT_AREA
 
 ROM Allocation:
-000031  ngatDongCo
-00005A  MAIN
-00005A  @cinit1
-00006E  @cinit2
+00002F  main
+00002F  @cinit1
+000043  @cinit2
 
 Project Directory:
     C:\Users\Dung Phan\Documents\Serial\
 
 Project Files:
-    main.c                                                  [17-Nov-17 08:43  CRC=E601F581]
+    main.c                                                  [20-Nov-17 16:12  CRC=E4670BCE]
     main.h                                                  [17-Nov-17 08:35  CRC=00000000]
     ..\..\..\..\Program Files (x86)\PICC\Devices\16F877A.h  [12-Nov-13 14:35  CRC=81334808]
 
-Source signature=E8688591
+Source signature=E6CD9BDE
 
 Units:
     main (main)

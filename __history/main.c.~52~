@@ -1,0 +1,30 @@
+#include <main.h>
+
+#use rs232(baud=9600,Parity=N,xmit=PIN_C6,rcv=PIN_C7)
+int a;
+#INT_TBE
+void ngatDongCo()
+{
+if(input(PIN_B0)==1)
+     a=1;
+     else
+     a=0;
+delay_ms(100);
+   if(a==0)
+   {
+      putc('a');
+   }
+
+}
+
+void main()
+{
+   enable_interrupts(int_rda);
+   enable_interrupts(INT_TBE);
+   enable_interrupts(GLOBAL);
+   setup_adc_ports(0); 
+   while(TRUE)
+   {
+
+   }
+}

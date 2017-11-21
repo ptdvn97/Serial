@@ -1,0 +1,41 @@
+#include <main.h>
+#define b = INPUT(PIN_B0);
+#use rs232(baud=9600,Parity=N,xmit=PIN_C6,rcv=PIN_C7)
+
+#INT_RDA
+void ngatDongCo()
+{
+while(1)
+{
+   char a;
+   a = getc(b);
+   switch(a)
+   {
+      case '1':
+      {
+         putc('K');
+         OUTPUT_BIT(PIN_C0,1);
+         break;
+      }
+      case '0':
+      {
+         OUTPUT_BIT(PIN_C0,0);
+         putc('F');
+         break;
+      }
+   }
+}
+}
+
+
+
+void main()
+{
+   enable_interrupts(int_rda);
+   enable_interrupts(GLOBAL);
+   setup_adc_ports(NO_ANALOG); 
+   while(TRUE)
+   {
+    
+   }
+}

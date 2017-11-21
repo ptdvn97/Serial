@@ -1,0 +1,21 @@
+#include <main.h>
+
+#use rs232(baud=9600,Parity=N,xmit=PIN_C6,rcv=PIN_C7)
+int a=0;
+
+
+void main()
+{
+   int a;
+   set_tris_b(0x00);
+   while(1)
+   {
+   a = input(PIN_B0);
+      if(a==1)
+   putc('L');
+   else
+   putc('K');
+   delay_ms(1000);
+   }
+   
+}

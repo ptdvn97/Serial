@@ -1,0 +1,27 @@
+#include <main.h>
+
+#use rs232(baud=9600,Parity=N,xmit=PIN_C6,rcv=PIN_C7)
+#INT_RB
+void ngatRB()
+{
+   if(INPUT(PIN_B0)==1)
+   {
+      enable_interrupts(INT_TBE);
+   }
+}
+#INT_TBE
+void truyen()
+{
+   putc('H');
+   if(INPUT(PIN_B0)==0)
+   {
+   break;
+   }
+}
+void main()
+{
+   enable_interrupts(INT_RB);
+   enable_interrupts(GLOBAL);
+   while(1)
+   {}
+}
