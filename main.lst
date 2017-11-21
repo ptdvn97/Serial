@@ -1,18 +1,18 @@
-CCS PCM C Compiler, Version 5.025, 5967               20-Nov-17 16:12
+CCS PCM C Compiler, Version 5.025, 5967               21-Nov-17 21:35
 
                Filename:   C:\Users\Dung Phan\Documents\Serial\main.lst
 
-               ROM used:   93 words (1%)
+               ROM used:   133 words (2%)
                            Largest free fragment is 2048
                RAM used:   14 (4%) at main() level
-                           14 (4%) worst case
-               Stack used: 0 locations
+                           15 (4%) worst case
+               Stack used: 1 locations (0 in main + 1 for interrupts)
                Stack size: 8
 
 *
 0000:  MOVLW  00
 0001:  MOVWF  0A
-0002:  GOTO   02F
+0002:  GOTO   06B
 0003:  NOP
 0004:  MOVWF  7F
 0005:  SWAPF  03,W
@@ -36,27 +36,36 @@ CCS PCM C Compiler, Version 5.025, 5967               20-Nov-17 16:12
 0017:  BTFSS  0B.3
 0018:  GOTO   01B
 0019:  BTFSC  0B.0
-001A:  GOTO   02C
-001B:  MOVF   22,W
+001A:  GOTO   032
+001B:  MOVLW  8C
 001C:  MOVWF  04
-001D:  MOVF   23,W
-001E:  MOVWF  77
-001F:  MOVF   24,W
-0020:  MOVWF  78
-0021:  MOVF   25,W
-0022:  MOVWF  79
-0023:  MOVF   26,W
-0024:  MOVWF  7A
-0025:  MOVF   20,W
-0026:  MOVWF  0A
-0027:  SWAPF  21,W
-0028:  MOVWF  03
-0029:  SWAPF  7F,F
-002A:  SWAPF  7F,W
-002B:  RETFIE
-002C:  BCF    0A.3
-002D:  BCF    0A.4
-002E:  GOTO   02F
+001D:  BTFSS  00.5
+001E:  GOTO   021
+001F:  BTFSC  0C.5
+0020:  GOTO   035
+0021:  MOVF   22,W
+0022:  MOVWF  04
+0023:  MOVF   23,W
+0024:  MOVWF  77
+0025:  MOVF   24,W
+0026:  MOVWF  78
+0027:  MOVF   25,W
+0028:  MOVWF  79
+0029:  MOVF   26,W
+002A:  MOVWF  7A
+002B:  MOVF   20,W
+002C:  MOVWF  0A
+002D:  SWAPF  21,W
+002E:  MOVWF  03
+002F:  SWAPF  7F,F
+0030:  SWAPF  7F,W
+0031:  RETFIE
+0032:  BCF    0A.3
+0033:  BCF    0A.4
+0034:  GOTO   06B
+0035:  BCF    0A.3
+0036:  BCF    0A.4
+0037:  GOTO   038
 .................... #include <main.h> 
 .................... #include <16F877A.h> 
 .................... //////////// Standard Header file for the PIC16F877A device //////////////// 
@@ -81,67 +90,116 @@ CCS PCM C Compiler, Version 5.025, 5967               20-Nov-17 16:12
 .................... #INT_RB 
 ....................  
 .................... void main() 
-002F:  MOVF   03,W
-0030:  ANDLW  1F
-0031:  MOVWF  03
-0032:  MOVLW  81
-0033:  BSF    03.5
-0034:  MOVWF  19
-0035:  MOVLW  A6
-0036:  MOVWF  18
-0037:  MOVLW  90
-0038:  BCF    03.5
-0039:  MOVWF  18
-003A:  MOVLW  FF
-003B:  MOVWF  28
-003C:  BSF    03.5
-003D:  BSF    1F.0
-003E:  BSF    1F.1
-003F:  BSF    1F.2
-0040:  BCF    1F.3
-0041:  MOVLW  07
-0042:  MOVWF  1C
-0043:  BCF    03.7
+*
+006B:  MOVF   03,W
+006C:  ANDLW  1F
+006D:  MOVWF  03
+006E:  MOVLW  81
+006F:  BSF    03.5
+0070:  MOVWF  19
+0071:  MOVLW  A6
+0072:  MOVWF  18
+0073:  MOVLW  90
+0074:  BCF    03.5
+0075:  MOVWF  18
+0076:  MOVLW  FF
+0077:  MOVWF  28
+0078:  BSF    03.5
+0079:  BSF    1F.0
+007A:  BSF    1F.1
+007B:  BSF    1F.2
+007C:  BCF    1F.3
+007D:  MOVLW  07
+007E:  MOVWF  1C
+007F:  BCF    03.7
 .................... { 
-....................    set_tris_b(0x00); 
-0044:  MOVLW  00
-0045:  MOVWF  06
-....................    setup_adc_ports(7); 
-0046:  BSF    1F.0
-0047:  BSF    1F.1
-0048:  BSF    1F.2
-0049:  BCF    1F.3
-....................    while(1) 
-....................    { 
-....................       if(input(PIN_C0)) 
-004A:  BCF    03.5
-004B:  BSF    28.0
-004C:  MOVF   28,W
-004D:  BSF    03.5
-004E:  MOVWF  07
-004F:  BCF    03.5
-0050:  BTFSS  07.0
-0051:  GOTO   057
-....................       { 
-....................          putc('S'); 
-0052:  MOVLW  53
-0053:  BTFSS  0C.4
-0054:  GOTO   053
-0055:  MOVWF  19
-....................       } 
-0056:  GOTO   05B
-....................       else 
-....................       { 
-....................          putc('D'); 
-0057:  MOVLW  44
-0058:  BTFSS  0C.4
-0059:  GOTO   058
-005A:  MOVWF  19
-....................       } 
-005B:  GOTO   04B
-....................    } 
+....................    enable_interrupts(INT_RDA); 
+0080:  BSF    0C.5
+....................    enable_interrupts(GLOBAL); 
+0081:  MOVLW  C0
+0082:  BCF    03.5
+0083:  IORWF  0B,F
 .................... } 
-005C:  SLEEP
+....................  
+.................... #INT_RDA 
+.................... void ngatRDA() 
+0084:  SLEEP
+.................... { 
+....................    char a; 
+....................    a = getc(); 
+*
+0038:  BTFSS  0C.5
+0039:  GOTO   038
+003A:  MOVF   1A,W
+003B:  MOVWF  29
+....................    switch(a) 
+003C:  MOVF   29,W
+003D:  XORLW  72
+003E:  BTFSC  03.2
+003F:  GOTO   047
+0040:  XORLW  1E
+0041:  BTFSC  03.2
+0042:  GOTO   054
+0043:  XORLW  1F
+0044:  BTFSC  03.2
+0045:  GOTO   061
+0046:  GOTO   067
+....................    { 
+....................       case 'r': 
+....................       { 
+....................          output_bit(PIN_C1,1); 
+0047:  BSF    07.1
+0048:  BCF    28.1
+0049:  MOVF   28,W
+004A:  BSF    03.5
+004B:  MOVWF  07
+....................          output_bit(PIN_C4,1); 
+004C:  BCF    03.5
+004D:  BSF    07.4
+004E:  BCF    28.4
+004F:  MOVF   28,W
+0050:  BSF    03.5
+0051:  MOVWF  07
+....................          break; 
+0052:  BCF    03.5
+0053:  GOTO   067
+....................       } 
+....................       case 'l': 
+....................       { 
+....................          output_bit(PIN_C1,1); 
+0054:  BSF    07.1
+0055:  BCF    28.1
+0056:  MOVF   28,W
+0057:  BSF    03.5
+0058:  MOVWF  07
+....................          output_bit(PIN_C4,0); 
+0059:  BCF    03.5
+005A:  BCF    07.4
+005B:  BCF    28.4
+005C:  MOVF   28,W
+005D:  BSF    03.5
+005E:  MOVWF  07
+....................          break; 
+005F:  BCF    03.5
+0060:  GOTO   067
+....................       } 
+....................       case 's': 
+....................       { 
+....................          output_bit(PIN_C1,0); 
+0061:  BCF    07.1
+0062:  BCF    28.1
+0063:  MOVF   28,W
+0064:  BSF    03.5
+0065:  MOVWF  07
+....................          break; 
+0066:  BCF    03.5
+....................       } 
+....................    } 
+0067:  BCF    0C.5
+0068:  BCF    0A.3
+0069:  BCF    0A.4
+006A:  GOTO   021
+.................... } 
 
 Configuration Fuses:
    Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

@@ -1,8 +1,7 @@
-d G "INT_COMP" 2 668 "0x008D40"
-D G "__PCM__" 0 23 ""5.025""
-D G "__DEVICE__" 0 23 "877"
-D G "__DATE__" 0 23 ""20-Nov-17""
-D G "__TIME__" 0 23 ""16:12:34"" "Standard Header file for the PIC16F877A device ////////////////"
+D G "__PCM__" 0 39 ""5.025""
+D G "__DEVICE__" 0 39 "877"
+D G "__DATE__" 0 39 ""21-Nov-17""
+D G "__TIME__" 0 39 ""21:35:57"" "Standard Header file for the PIC16F877A device ////////////////"
 c L "set_tris_a" 2 3 6 "FUNCTION"
 v L "value" 2 37 "int8" `54 
 f B "set_tris_a" 2 37 "void(int8 value)" `53 
@@ -778,6 +777,8 @@ d G "INT_EEPROM" 2 666 "0x008D10"
 d G "INT_TIMER0" 2 667 "0x000B20"
 d G "INT_COMP" 2 668 "0x008D40"
 F G "main" 0 7 "void()" `624 
+F G "ngatRDA" 0 14 "void()" `627 
+V L "a" 0 15 "int8" `628 
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 0

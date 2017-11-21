@@ -1,5 +1,5 @@
-004-005 @WRITE_PROGRAM_MEMORY8.P1
-004-005 @READ_PROGRAM_MEMORY8.P2
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
 008     PSP_DATA
 015     CCP_1_LOW
 015     CCP_1
@@ -16,6 +16,7 @@
 026     @INTERRUPT_AREA
 027     @INTERRUPT_AREA
 028     @TRIS_C
+029     ngatRDA.a
 077     @SCRATCH
 078     @SCRATCH
 078     _RETURN_
@@ -59,19 +60,20 @@ F7F     @INTERRUPT_AREA
 FFF     @INTERRUPT_AREA
 
 ROM Allocation:
-00002F  main
-00002F  @cinit1
-000043  @cinit2
+000038  ngatRDA
+00006B  main
+00006B  @cinit1
+00007F  @cinit2
 
 Project Directory:
     C:\Users\Dung Phan\Documents\Serial\
 
 Project Files:
-    main.c                                                  [20-Nov-17 16:12  CRC=E4670BCE]
+    main.c                                                  [21-Nov-17 21:35  CRC=5D16CF66]
     main.h                                                  [17-Nov-17 08:35  CRC=00000000]
     ..\..\..\..\Program Files (x86)\PICC\Devices\16F877A.h  [12-Nov-13 14:35  CRC=81334808]
 
-Source signature=E6CD9BDE
+Source signature=5F7D5F76
 
 Units:
     main (main)

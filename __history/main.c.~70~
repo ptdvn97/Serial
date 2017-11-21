@@ -16,21 +16,16 @@ void ngatRDA()
    a = getc();
    switch(a)
    {
-      case 'r':
+      case 'r';
       {
          output_bit(PIN_C1,1);
          output_bit(PIN_C4,1);
          break;
       }
-      case 'l':
+      case 'l';
       {
          output_bit(PIN_C1,1);
          output_bit(PIN_C4,0);
-         break;
-      }
-      case 's':
-      {
-         output_bit(PIN_C1,0);
          break;
       }
    }

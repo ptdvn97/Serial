@@ -28,10 +28,5 @@ void ngatRDA()
          output_bit(PIN_C4,0);
          break;
       }
-      case 's':
-      {
-         output_bit(PIN_C1,0);
-         break;
-      }
    }
 }
